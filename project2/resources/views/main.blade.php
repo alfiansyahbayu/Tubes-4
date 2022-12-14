@@ -1,52 +1,68 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.mainlayout')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('isi')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <title>Dashboard TIM 4</title>
-</head>
 
-<body class="bg-light">
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid mx-4">
-                <!-- <img src="image/Walpapper-OpenSID3.png" class="img-fluid" alt="logo" style="max-width: 50px"> -->
-                <a class="navbar-brand" href="#">Open-SID 4</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Beranda</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Kategori
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/pekerjaan">Pekerjaan</a></li>
-                                <li><a class="dropdown-item" href="/hubungan">Hubungan</a></li>
-                                <li><a class="dropdown-item" href="/umur">Umur</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- <form class="d-flex">
-                        <button class="btn btn-light btn-outline-dark" type="submit">Keluar</button>
-                    </form> -->
-                </div>
-            </div>
-        </nav>
+<script>
+    fetch("http://127.0.0.1:8080/api/v1/pekerjaan").then((data) => {
+        //console.log(data);
+        return data.json();
+    }).then((objectData) => {
+        console.log(objectData.data[0].nama);
+        let tableData = "";
+        objectData.data.map((values) => {
+            tableData += `<tr>
+                            <td>${values.nama}</td>
+                            <td>${values.Jumlah_L}</td>
+                            <td>${values.Jumlah_P}</td>
+                        </tr>`;
+        });
+        document.getElementById("table_body").innerHTML = tableData;
+    })
+</script>
 
-        @yield('isi')
-
+<div class=" container mt-5 " style="min-height: 800px; width:1500px" >
+    <div class="row g-0">
+        <div class="d-flex col-6 col-md-4 " style="max-height: 800px">
+            <a href="/pekerjaan">
+                <img src="/images/pekerjaan.png" style="overflow:hidden;" class="img-fluid image" alt="...">
+            </a>
+        </div>
+        <div class="col-6 col-md-4 ">
+            <a href="/hubungan">
+                <img src="/images/hubungan.png"  class="img-fluid " alt="...">
+            </a>
+        </div>
+        <div class="col-6 col-md-4 ">
+            <a href="/umur">
+                <img src="/images/umur.png"  style="display:block" class="img-fluid" alt="...">
+            </a>
+        </div>
     </div>
+    <div class="text-center mt-5">
+        <h1>Open SID</h1>
+        <p class="mt-2">
+            OpenSID  adalah Sistem Informasi Desa (SID) yang sengaja dibuat supaya terbuka dan dapat dikembangkan bersama-sama oleh komunitas peduli SID.
 
-</body>
+            SID diharapkan dapat membantu desa dalam beberapa hal berikut:
 
-</html>
+            kantor desa lebih efisien dan efektif
+            pemerintah desa lebih transparan dan akuntabel
+            layanan publik lebih baik
+            warga mendapat akses lebih baik pada informasi desa
+            OpenSID adalah aplikasi open source (sumber terbuka), yang:
+
+            bebas diperoleh, tanpa pendaftaran atau hambatan apapun
+            rutin disempurnakan, dan
+            dikembangkan bersama-sama oleh komunitas peduli SID, di mana pengguna berperan langsung mengarahkan pengembangannya.
+            OpenSID diharapkan dapat turut membantu agar ke semua 74ribu+ desa di Indonesia dapat menerapkan sistem informasi untuk memajukan desanya.
+
+            OpenSID ada 2 versi rilis :
+
+            Rilis Umum (GRATIS)
+            Rilis Fitur Premium (Langganan)
+        </p>
+    </div>
+</div>
+
+@endsection
