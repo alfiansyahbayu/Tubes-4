@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('/sessions/login');
+});
+
+Route::get('/main', function () {
     return view('main');
 });
 
@@ -30,3 +34,7 @@ Route::get('/hubungan', function () {
 Route::get('/umur', function () {
     return view('umur');
 });
+
+Route::get('/sessions', [SessionController::class, 'index']);
+Route::post('/sessions/login', [SessionController::class, 'login']);
+
