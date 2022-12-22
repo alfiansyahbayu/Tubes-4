@@ -37,4 +37,5 @@ Route::get('/umur', function () {
 
 Route::get('/sessions', [SessionController::class, 'index']);
 Route::post('/sessions/login', [SessionController::class, 'login']);
+Route::get('/sessions/logout', [SessionController::class, 'logout']);
 

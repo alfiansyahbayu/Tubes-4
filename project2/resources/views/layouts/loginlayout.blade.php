@@ -30,9 +30,9 @@
                         Kategori
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/pekerjaan">Pekerjaan</a></li>
-                        <li><a class="dropdown-item" href="/hubungan">Hubungan</a></li>
-                        <li><a class="dropdown-item" href="/umur">Umur</a></li>
+                        <li><a class="dropdown-item" href="/">Pekerjaan</a></li>
+                        <li><a class="dropdown-item" href="/">Hubungan</a></li>
+                        <li><a class="dropdown-item" href="/">Umur</a></li>
                         </ul>
                     </li>
                 </ul>

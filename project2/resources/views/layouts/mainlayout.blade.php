@@ -37,9 +37,9 @@
                             </ul>
                         </li>
                     </ul>
-                    <!-- <form class="d-flex">
-                        <button class="btn btn-light btn-outline-dark" type="submit">Keluar</button>
-                    </form> -->
+                    <form class="d-flex">
+                        <li class="btn btn-light"><a href="/sessions/logout" class="text-dark">Keluar</a></li>
+                    </form> 
                 </div>
             </div>
         </nav>
